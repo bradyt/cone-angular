@@ -31,7 +31,8 @@ class AddTransactionComponent implements OnInit {
   void ngOnInit() {}
 
   void add() {
-    File(ledgerFile)..writeAsString(newTransaction);
+    File lF = File(ledgerFile);
+    lF.writeAsString(newTransaction);
     newTransaction = '';
   }
 }
