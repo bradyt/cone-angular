@@ -1,8 +1,8 @@
-// import 'dart:io';
+import 'dart:io';
 
 import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
-// import 'package:path/path.dart' as p;
+import 'package:path/path.dart' as p;
 
 @Component(
   selector: 'add-transaction',
@@ -19,21 +19,21 @@ import 'package:angular_components/angular_components.dart';
 )
 class AddTransactionComponent implements OnInit {
   String newTransaction = '';
-  // var homeDir;
-  // File ledgerFile;
+  var homeDir;
+  File ledgerFile;
 
   @override
   void ngOnInit() {
-    // if (Platform.isWindows) {
-    //   homeDir = Platform.environment['APPDATA'];
-    // } else {
-    //   homeDir = Platform.environment['HOME'];
-    // }
-    // ledgerFile = File(p.join(homeDir, '.cone.ledger'));
+    if (Platform.isWindows) {
+      homeDir = Platform.environment['APPDATA'];
+    } else {
+      homeDir = Platform.environment['HOME'];
+    }
+    ledgerFile = File(p.join(homeDir, '.cone.ledger'));
   }
 
   void add() {
-    // ledgerFile.writeAsString(newTransaction);
+    ledgerFile.writeAsString(newTransaction);
     newTransaction = '';
   }
 }
