@@ -1,0 +1,14 @@
+<!-- Components info: https://webdev.dartlang.org/components -->
+<div>
+  <material-input label="What transaction would you like to add to {{ledgerFile.toString()}}?"
+                  autoFocus floatingLabel style="width:80%"
+                  [(ngModel)]="newTransaction"
+                  (keyup.enter)="add()">
+  </material-input>
+
+  <material-fab mini raised
+                (trigger)="add()"
+                [disabled]="newTransaction.isEmpty">
+    <material-icon icon="add"></material-icon>
+  </material-fab>
+</div>
