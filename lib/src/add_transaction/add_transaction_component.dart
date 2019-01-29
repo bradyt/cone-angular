@@ -19,21 +19,19 @@ import 'package:path/path.dart' as p;
 )
 class AddTransactionComponent implements OnInit {
   String newTransaction = '';
-  var homeDir;
-  File ledgerFile;
+  String homeDir;
+  String ledgerFile;
 
-  @override
-  void ngOnInit() {
-    if (Platform.isWindows) {
-      homeDir = Platform.environment['APPDATA'];
-    } else {
-      homeDir = Platform.environment['HOME'];
-    }
-    ledgerFile = File(p.join(homeDir, '.cone.ledger'));
+  AddTransactionComponent() {
+    homeDir = r'C:\\Users\Administrator\';
+    ledgerFile = p.join(homeDir, '.cone.ledger');
   }
 
+  @override
+  void ngOnInit() {}
+
   void add() {
-    ledgerFile.writeAsString(newTransaction);
+    File(ledgerFile)..writeAsString(newTransaction);
     newTransaction = '';
   }
 }
